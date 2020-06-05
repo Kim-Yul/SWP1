@@ -1,2 +1,2 @@
 # 2020XXXX	Kim Yu Rim
-# Kookmin Univ. SW
+# Kookmin Univ. Computer Science
