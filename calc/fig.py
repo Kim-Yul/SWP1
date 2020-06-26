@@ -8,12 +8,20 @@ def application(environ, start_response):
     x = 'nonexistent'
     y = 'nonexistent'
     try:
-        a, b = int(a), int(b)
-	x = a + b
-	y = a * b
+	if a.isdigit() and b.isdigit():
+            a, b = int(a), int(b)
+	    x = a + b
+	    y = a * b
+	elif '' not in [a, b]:
+	    a, b = float(a), float(b)
+	    x = a + b
+	    y = a * b
+	elif '' in [a, b]:
+	    x = 'no value'
+	    y = 'no value'
     except Value Error:
-	x = 'no value'
-	y = 'no value'
+	x = 'not running'
+	y = 'not running'
     response_body = html+"Addition is {} and Multiplication is {}".format(x, y)
     start_response('200 OK', [
 	('Content-Type', 'text/html'),
