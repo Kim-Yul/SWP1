@@ -7,10 +7,13 @@ def application(environ, start_response):
     b = d.get('b', [''])[0]
     x = 'nonexistent'
     y = 'nonexistent'
-    if '' not in [a, b]:
+    try:
         a, b = int(a), int(b)
 	x = a + b
 	y = a * b
+    except Value Error:
+	x = 'no value'
+	y = 'no value'
     response_body = html+"Addition is {} and Multiplication is {}".format(x, y)
     start_response('200 OK', [
 	('Content-Type', 'text/html'),
